@@ -18,3 +18,11 @@ Server.GetTopic("Height").Add(
         function(value)
             Server.SetWorldVar(1,value*0.5)
         end)
+
+Server.damageCallback = function(a, b, damage, skillDataID, critical, visible)
+        damage = a.atk - b.def
+            if damage <= 0  then
+                    visible = false
+            end
+        return damage, critical, visible;
+    end
