@@ -10,6 +10,5 @@ function BasicAttack(a, b, critical)
         a_atk = a_atk*2
     end
 
-    a.AddMP(10)
     return a.atk
 end
