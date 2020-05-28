@@ -59,26 +59,26 @@ RandomOption.itemList = { --★ 수정필요 ★
     -- 중복주의 / 중복된 dataID 가 있을 경우 제일 높은 등급이 적용됩니다.
     -- 아래로 쭉쭉추가하시면 됩니다 (,는 꼭 넣어주세요)
 
-    [1] = { --F등급
+    [1] = { -- 일반
+        optionCount=0, optionAmp=0,
+        dataID = {
+            
+        }
+    }, 
+    [2] = { -- 개조
+        optionCount=0, optionAmp=0,
+        dataID = {
+            
+        }
+    }, 
+    [3] = { -- 영웅
         optionCount=1, optionAmp=100,
-        dataID = {
-            1, 2, 3
-        }
-    }, 
-    [2] = { --D등급
-        optionCount=2, optionAmp=200,
-        dataID = {
-            11, 12, 13
-        }
-    }, 
-    [3] = { --C등급
-        optionCount=3, optionAmp=100,
         dataID = {
             21, 22, 23
         }
     }, 
-    [4] = { --B등급
-        optionCount=4, optionAmp=100,
+    [4] = { -- 전설
+        optionCount=2, optionAmp=100,
         dataID = {
 
         }
