@@ -26,3 +26,14 @@ Server.damageCallback = function(a, b, damage, skillDataID, critical, visible)
             end
         return damage, critical, visible;
     end
+
+Server.GetTopic("originalQuickslot").Add(function(quick1, quick2, quick3, quick4, quick5, quick6, quick7, quick8)
+    unit.SetQuickSlot(2, 0, quick1)
+    unit.SetQuickSlot(2, 1, quick2)
+    unit.SetQuickSlot(2, 2, quick3)
+    unit.SetQuickSlot(2, 3, quick4)
+    unit.SetQuickSlot(2, 4, quick5)
+    unit.SetQuickSlot(2, 5, quick6)
+    unit.SetQuickSlot(2, 6, quick7)
+    unit.SetQuickSlot(2, 7, quick8)
+end)
