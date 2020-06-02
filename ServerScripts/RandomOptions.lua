@@ -60,13 +60,13 @@ RandomOption.itemList = { --★ 수정필요 ★
     -- 아래로 쭉쭉추가하시면 됩니다 (,는 꼭 넣어주세요)
 
     [1] = { -- 일반
-        optionCount=0, optionAmp=0,
+        optionCount=1, optionAmp=100,
         dataID = {
-            
+            4
         }
     }, 
     [2] = { -- 개조
-        optionCount=0, optionAmp=0,
+        optionCount=1, optionAmp=100,
         dataID = {
             
         }
