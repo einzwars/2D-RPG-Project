@@ -19,13 +19,13 @@ Server.GetTopic("Height").Add(
             Server.SetWorldVar(1,value*0.5)
         end)
 
-Server.damageCallback = function(a, b, damage, skillDataID, critical, visible)
-        damage = a.atk - b.def
-            if damage <= 0  then
-                    visible = false
-            end
-        return damage, critical, visible;
-    end
+-- Server.damageCallback = function(a, b, damage, skillDataID, critical, visible)
+--     damage = a.atk - b.def
+--         if damage <= 0  then
+--                 visible = false
+--         end
+--     return damage, critical, visible;
+-- end
 
 Server.GetTopic("originalQuickslot").Add(function(quick1, quick2, quick3, quick4, quick5, quick6, quick7, quick8)
     unit.SetQuickSlot(2, 0, quick1)
