@@ -20,12 +20,19 @@ Server.GetTopic("Height").Add(
         end)
 
 -- Server.damageCallback = function(a, b, damage, skillDataID, critical, visible)
---     damage = a.atk - b.def
---         if damage <= 0  then
---                 visible = false
---         end
---     return damage, critical, visible;
+--     if a.luk > rand(1,101) then
+--         b.showAnimation(14)
+--         critical = true
+--         damage = damage * 2
+--     end
 -- end
+
+function applyCritical(a, b)
+    if a.luk > rand(1, 101) then
+        b.showAnimation(14)
+        critical = true
+        damage = damage * 2
+    end
 
 Server.GetTopic("originalQuickslot").Add(function(quick1, quick2, quick3, quick4, quick5, quick6, quick7, quick8)
     unit.SetQuickSlot(2, 0, quick1)
