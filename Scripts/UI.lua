@@ -1,8 +1,8 @@
 
-ScreenUI.hpBarVisible  = false
-ScreenUI.mpBarVisible  = false
-ScreenUI.expBarVisible  = false
-ScreenUI.levelVisible = false
+-- ScreenUI.hpBarVisible  = false
+-- ScreenUI.mpBarVisible  = false
+-- ScreenUI.expBarVisible  = false
+-- ScreenUI.levelVisible = false
 
 HPMP = Image("Pictures/HPMP.png", Rect(Client.width/2-104, Client.height-101, 207, 41))
 HUD = Image("Pictures/HUD.png", Rect(0, Client.height-48, 1200, 48))
