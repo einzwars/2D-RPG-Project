@@ -23,10 +23,10 @@ Server.damageCallback = function(a, b, damage, skillDataID, critical, visible)
     if a.luk > rand(1,101) then
         b.showAnimation(14)
         critical = true
-        damage = damage * 2
-        return damage
+        damage = math.ceil(damage * 2 + (damage * a.agi * 0.01))   -- 민첩 1당 원래 데미지의 0.01% 추가 상승
+        return damage-b.def
     end
-    return damage
+    return damage-b.def
 end
 
 Server.GetTopic("originalQuickslot").Add(function(quick1, quick2, quick3, quick4, quick5, quick6, quick7, quick8)
