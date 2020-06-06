@@ -19,16 +19,6 @@ Server.GetTopic("Height").Add(
             Server.SetWorldVar(1,value*0.5)
         end)
 
-Server.damageCallback = function(a, b, damage, skillDataID, critical, visible)
-    if a.luk > rand(1,101) then
-        b.showAnimation(14)
-        critical = true
-        damage = math.ceil(damage * 2 + (damage * a.agi * 0.01))   -- 민첩 1당 원래 데미지의 0.01% 추가 상승
-        return damage-b.def
-    end
-    return damage-b.def
-end
-
 Server.GetTopic("originalQuickslot").Add(function(quick1, quick2, quick3, quick4, quick5, quick6, quick7, quick8)
     unit.SetQuickSlot(2, 0, quick1)
     unit.SetQuickSlot(2, 1, quick2)
@@ -81,3 +71,16 @@ end)
 Server.onAddItem.Add(function(unit)
     unit.FireEvent("무기목록재발신요청")
 end)
+
+-- function StatusUpdate(unit)    
+--     --local questCounter = unit.GetStat(101)
+
+--     unit.SetStat(101, unit.GetVar(23))
+
+--     unit.SendUpdated()
+-- end
+
+-- function StatusInfoUpdated(unit)
+--     StatusUpdate(unit)
+-- end
+-- Server.onRefreshStats.Add(StatusInfoUpdated)

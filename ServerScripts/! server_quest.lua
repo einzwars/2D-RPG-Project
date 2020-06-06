@@ -65,7 +65,7 @@ function sub_quest(id)
 	local bool = 0
 	for i=1, #qData.list do
 		if qData.list[#qData.list-(i-1)].id == id then
-			unit.SendCenterLabel(string.gsub(qData.list[#qData.list-(i-1)].name, "slash", "/").." 퀘스트를 포기하였습니다.")
+			-- unit.SendCenterLabel(string.gsub(qData.list[#qData.list-(i-1)].name, "slash", "/").." 퀘스트를 포기하였습니다.")
 			table.remove(qData.list, #qData.list-(i-1))
 			unit.SetStringVar(quest_var, Utility.JSONSerialize(qData))
 		end
@@ -85,7 +85,7 @@ function give_questCheck(id)
 					unit.AddItem(qData.list[i].reward[i2], qData.list[i].count[i2], false)
 				end
 				unit.AddEXP(qData.list[#qData.list-(i-1)].exp)
-				unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
+				-- unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
 				if qData.list[i].GlobalEvent ~= false then
 					unit.StartGlobalEvent(tonumber(qData.list[i].GlobalEvent))
 				end
@@ -143,7 +143,7 @@ function onUnitDead(target, attacker)
 						attacker.AddItem(qData.list[i].reward[i2], qData.list[i].count[i2], false)
 					end
 					attacker.AddEXP(qData.list[#qData.list-(i-1)].exp)
-					attacker.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
+					-- attacker.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
 					if qData.list[i].GlobalEvent ~= false then
 						attacker.StartGlobalEvent(tonumber(qData.list[i].GlobalEvent))
 					end
@@ -177,7 +177,7 @@ Server.onUseItem.Add(function(unit, titem)
 					unit.AddItem(qData.list[i].reward[i2], qData.list[i].count[i2], false)
 				end
 				unit.AddEXP(qData.list[#qData.list-(i-1)].exp)
-				unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
+				-- unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
 				if qData.list[i].GlobalEvent ~= false then
 					unit.StartGlobalEvent(tonumber(qData.list[i].GlobalEvent))
 				end
@@ -209,7 +209,7 @@ Server.onSay.Add(function(unit, text)
 					unit.AddItem(qData.list[i].reward[i2], qData.list[i].count[i2], false)
 				end
 				unit.AddEXP(qData.list[#qData.list-(i-1)].exp)
-				unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
+				-- unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
 				if qData.list[i].GlobalEvent ~= false then
 					unit.StartGlobalEvent(tonumber(qData.list[i].GlobalEvent))
 				end
@@ -240,7 +240,7 @@ Server.onUnitDead.Add(function(target, attacker)
 						target.AddItem(qData.list[i].reward[i2], qData.list[i].count[i2], false)
 					end
 					target.AddEXP(qData.list[#qData.list-(i-1)].exp)
-					target.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
+					-- target.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
 					if qData.list[i].GlobalEvent ~= false then
 						target.StartGlobalEvent(tonumber(qData.list[i].GlobalEvent))
 					end
@@ -273,7 +273,7 @@ Server.onBuyGameMoneyItem.Add(function(unit, dataID, count)
 					unit.AddItem(qData.list[i].reward[i2], qData.list[i].count[i2], false)
 				end
 				unit.AddEXP(qData.list[#qData.list-(i-1)].exp)
-				unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
+				-- unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
 				if qData.list[i].GlobalEvent ~= false then
 					unit.StartGlobalEvent(tonumber(qData.list[i].GlobalEvent))
 				end
@@ -305,7 +305,7 @@ Server.onSellGameMoneyItem.Add(function(unit, dataID, count)
 					unit.AddItem(qData.list[i].reward[i2], qData.list[i].count[i2], false)
 				end
 				unit.AddEXP(qData.list[#qData.list-(i-1)].exp)
-				unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
+				-- unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
 				if qData.list[i].GlobalEvent ~= false then
 					unit.StartGlobalEvent(tonumber(qData.list[i].GlobalEvent))
 				end
@@ -337,7 +337,7 @@ Server.onAddItem.Add(function(unit, titem)
 					unit.AddItem(qData.list[i].reward[i2], qData.list[i].count[i2], false)
 				end
 				unit.AddEXP(qData.list[#qData.list-(i-1)].exp)
-				unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
+				-- unit.SendCenterLabel(string.gsub(qData.list[i].name, "slash", "/").." 퀘스트을(를) 완료하였습니다.")
 				if qData.list[i].GlobalEvent ~= false then
 					unit.StartGlobalEvent(tonumber(qData.list[i].GlobalEvent))
 				end

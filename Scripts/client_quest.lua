@@ -223,21 +223,21 @@ Client.GetTopic("postqData").Add(function(qData)
 		listScrollPanel.content = listBoard
 	end
 
-	local ongoingList = Button("진\n행\n중", Rect(496, 80, 37, 79))
-	ongoingList.textSize = 16
-	ongoingList.color = Color(35, 35, 35)
-	ongoingList.onClick.Add(function()
-		sel = 1
-		refresh(1)
-	end)
+	-- local ongoingList = Button("진\n행\n중", Rect(496, 80, 37, 79))
+	-- ongoingList.textSize = 16
+	-- ongoingList.color = Color(35, 35, 35)
+	-- ongoingList.onClick.Add(function()
+	-- 	sel = 1
+	-- 	refresh(1)
+	-- end)
 
-	local completeList = Button("완\n료", Rect(496, 188, 37, 79))
-	completeList.textSize = 16
-	completeList.color = Color(35, 35, 35)
-	completeList.onClick.Add(function()
-		sel = 2
-		refresh(2)
-	end)
+	-- local completeList = Button("완\n료", Rect(496, 188, 37, 79))
+	-- completeList.textSize = 16
+	-- completeList.color = Color(35, 35, 35)
+	-- completeList.onClick.Add(function()
+	-- 	sel = 2
+	-- 	refresh(2)
+	-- end)
 
 	refresh(sel)
 
@@ -257,8 +257,8 @@ Client.GetTopic("postqData").Add(function(qData)
 	panel.AddChild(rewardEXPText)
 
 	panel.AddChild(closeButton)
-	panel.AddChild(ongoingList)
-	panel.AddChild(completeList)
+	-- panel.AddChild(ongoingList)
+	-- panel.AddChild(completeList)
 	mask.AddChild(panel)
 end)
 
