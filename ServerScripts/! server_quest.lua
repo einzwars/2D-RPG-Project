@@ -62,12 +62,15 @@ end
 function sub_quest(id)
 	local qData = unit.GetStringVar(quest_var)
 	qData = Utility.JSONParse(qData)
-	local bool = 0
+	local bool = false
 	for i=1, #qData.list do
-		if qData.list[#qData.list-(i-1)].id == id then
-			-- unit.SendCenterLabel(string.gsub(qData.list[#qData.list-(i-1)].name, "slash", "/").." 퀘스트를 포기하였습니다.")
-			table.remove(qData.list, #qData.list-(i-1))
-			unit.SetStringVar(quest_var, Utility.JSONSerialize(qData))
+		if bool == false then
+			if qData.list[#qData.list-(i-1)].id == id then
+				-- unit.SendCenterLabel(string.gsub(qData.list[#qData.list-(i-1)].name, "slash", "/").." 퀘스트를 포기하였습니다.")
+				table.remove(qData.list, #qData.list-(i-1))
+				unit.SetStringVar(quest_var, Utility.JSONSerialize(qData))
+				bool = true
+			end
 		end
 	end
 end
