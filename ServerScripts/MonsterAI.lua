@@ -27,7 +27,6 @@ Server.setMonsterAI(
 
         if(event == AI_DEAD) then               -- 적이 죽었을 때
             
-            -- enemy.ShowAnimation(19)
         end
     end
 )
@@ -37,6 +36,19 @@ Server.setMonsterAI(
     function (enemy, ai, event, data)
         if(event == AI_DEAD) then
             enemy.ShowAnimation(19)
+        end
+    end
+)
+
+Server.setMonsterAI(
+    2,
+    function (enemy, ai, event, data)
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 1000)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(3)
+            end
         end
     end
 )
