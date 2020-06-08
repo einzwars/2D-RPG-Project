@@ -43,12 +43,32 @@ Server.setMonsterAI(
 Server.setMonsterAI(
     2,
     function (enemy, ai, event, data)
-        if(event == AI_UPDATE) then
-            ai.SetNearTarget(0, 1000)
 
-            if(ai.GetTargetUnit() ~= nil) then
+        if(event == AI_INIT) then
+            Server.SendCenterLabel('침입자 발견. 침입자 발견. 지금부터 섬멸작전을 시행합니다.')
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 2000)
+
+            if(ai.GetTargetUnit() ~= nil)  and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)<=130) then
+                ai.UseSkill(5)                
+            else
                 ai.UseSkill(3)
             end
         end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+            end
+            
+            if(enemy.hp<=enemy.maxHP*0.4) and math.random(0, 99)<=49 then
+                ai.UseSkill(4)
+            end
+        end
+
     end
 )
