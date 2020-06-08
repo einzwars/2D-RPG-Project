@@ -62,7 +62,7 @@ RandomOption.itemList = { --★ 수정필요 ★
     [1] = { -- 일반
         optionCount=1, optionAmp=100,
         dataID = {
-            4
+            
         }
     }, 
     [2] = { -- 개조
@@ -74,7 +74,7 @@ RandomOption.itemList = { --★ 수정필요 ★
     [3] = { -- 영웅
         optionCount=1, optionAmp=100,
         dataID = {
-            21, 22, 23
+            
         }
     }, 
     [4] = { -- 전설
