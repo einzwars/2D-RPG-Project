@@ -36,6 +36,8 @@ Client.GetTopic("무목").Add(function(table)
                 c1.SetImageID(Client.GetItem(12).imageID)
                 c4.text = Client.GetItem(12).name .. "\n강화 재료1: "..v[4].."/10"
                 c8.text = "공격력+10"
+            else
+                Server.SendCenterLabel("아직 강화가 불가능합니다!")
             end
             c5.text = v[1]
             c9.text = v[2]
