@@ -30,47 +30,6 @@ Server.GetTopic("originalQuickslot").Add(function(quick1, quick2, quick3, quick4
     unit.SetQuickSlot(2, 7, quick8)
 end)
 
-Server.GetTopic("무기목록").Add(function()
-    local myItems = unit.player.GetItems()
-    local myItemsT = {}             -- 빈 테이블
-
-    for i, v in pairs(myItems) do
-        if Server.GetItem(myItems[i].dataID).type == 2 then
-            myItemsT["_"..i] = {myItems[i].id, myItems[i].dataID, myItems[i].count, myItems[i].level}
-        end
-    end
-
-    unit.FireEvent("무목", Utility.JSONSerialize(myItemsT))
-
-end)
-
-Server.GetTopic("강화요청").Add(function(itemID)
-    if itemID == "" or itemID == nil then
-        unit.SendCenterLabel("강화할 장비를 선택해주세요")
-        return
-    end
-
-    local id = tonumber(itemID)
-
-    if unit.player.GetItem(id) == nil then
-        unit.SendCenterLabel("강화 대상 장비가 없습니다")
-        return
-    end
-
-    if rand(0, 2) == 0 then
-        unit.SendCenterLabel("강화에 성공하였습니다")
-        unit.player.GetItem(id).level = unit.player.GetItem(id).level + 1
-        unit.player.SendItemUpdated(unit.player.GetItem(id))
-        unit.FireEvent("강화성공", unit.player.GetItem(id).level)
-    else
-        unit.SendCenterLabel("강화에 실패하였습니다")
-    end
-
-end)
-
-Server.onAddItem.Add(function(unit)
-    unit.FireEvent("무기목록재발신요청")
-end)
 
 -- function StatusUpdate(unit)    
 --     --local questCounter = unit.GetStat(101)
