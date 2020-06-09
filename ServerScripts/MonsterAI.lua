@@ -9,7 +9,7 @@ Server.setMonsterAI(
             ai.SetNearTarget(0, 200)            -- 파라미터 1번값이 0이면 플레이어 탐색, 2번값은 대상과의 거리
 
             if(ai.GetTargetUnit() ~= nil) then  -- 반환값을 주는 듯? 여하튼 여기선 반환값이 null이 아니면 실행
-                ai.UseSkill(1)                  -- 스킬 번호 입력
+                ai.UseSkill(0)                  -- 스킬 번호 입력
                 -- enemy.Say('삐빅. 대상을 추적합니다.')
                 ai.SetFollowTarget(true)
             end
@@ -45,7 +45,7 @@ Server.setMonsterAI(
     function (enemy, ai, event, data)
 
         if(event == AI_INIT) then
-            Server.SendCenterLabel('침입자 발견. 침입자 발견. 지금부터 섬멸작전을 시행합니다.')
+            Server.SendCenterLabel('침입자 발견. 침입자 발견. \n지금부터 섬멸작전을 시행합니다.')
         end
 
         if(event == AI_UPDATE) then
