@@ -72,3 +72,177 @@ Server.setMonsterAI(
 
     end
 )
+
+Server.setMonsterAI(
+    3,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 200)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(0)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    4,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 200)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(0)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    6,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 200)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(0)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    10,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 200)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(0)
+            else
+                enemy.Say("적 탐색 중...")
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    11,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 200)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(0)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    8,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil)  and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)>=200) then
+                ai.UseSkill(10)
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) then
+                enemy.moveSpeed = 250
+                ai.SetFollowTarget(true)
+            else
+                enemy.moveSpeed = 80
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                enemy.moveSpeed = 250
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
