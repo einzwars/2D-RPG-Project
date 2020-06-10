@@ -65,7 +65,7 @@ Server.setMonsterAI(
                 ai.SetTargetUnit(ai.GetAttackedUnit())
             end
             
-            if(enemy.hp<=enemy.maxHP*0.4) and math.random(0, 99)<=49 then
+            if(enemy.hp<=enemy.maxHP*0.4) and math.random(0, 99)<=59 then
                 ai.UseSkill(4)
             end
         end
