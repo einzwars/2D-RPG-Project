@@ -27,6 +27,10 @@ LVText.rect = Rect(10, Client.height-48+18, 122, 31)
 LVText.textSize = 20
 
 function refreshUI()
+	ScreenUI.hpBarVisible  = false
+	ScreenUI.mpBarVisible  = false
+	ScreenUI.expBarVisible  = false
+	ScreenUI.levelVisible = false
 
 	LVText.text = "LV."..Client.myPlayerUnit.level
 	LVTextOut1.text = "<color=#000000>LV."..Client.myPlayerUnit.level.."</color>"

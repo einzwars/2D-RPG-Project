@@ -1,10 +1,11 @@
 Client.GetTopic("무목").Add(function(table)
-    if grid == nil then
+    
+    --if grid == nil then
         grid = GridPanel()
         grid.rect = Rect(0, 0, 1, 1)
         grid.cellSize = Point(Client.width*0.067, Client.height*0.1)
         Client.GetPage("강화").GetControl("목록").AddChild(grid)
-    end
+    --end
 
     local myItems = Utility.JSONParse(table)
     local myItemsCount = 0
@@ -67,7 +68,7 @@ Client.GetTopic("강화성공").Add(function(level)
 end)
 
 Client.GetTopic("무기목록재발신요청").Add(function()
-    if Client.GetPage("강화").GetControl("아이템목록").visible == true then
+    if Client.GetPage("강화").GetControl("아이템목록").enabled == true then
         Client.FireEvent("무기목록")
     end
 end)

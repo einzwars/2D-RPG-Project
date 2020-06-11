@@ -30,7 +30,6 @@ Server.GetTopic("originalQuickslot").Add(function(quick1, quick2, quick3, quick4
     unit.SetQuickSlot(2, 7, quick8)
 end)
 
-
 -- function StatusUpdate(unit)    
 --     --local questCounter = unit.GetStat(101)
 

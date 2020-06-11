@@ -1,4 +1,5 @@
 Server.GetTopic("무기목록").Add(function()
+
     local myItems = unit.player.GetItems()
     local myItemsT = {}             -- 빈 테이블
     local ingredient1 = unit.CountItem(11)
@@ -38,6 +39,6 @@ Server.GetTopic("강화요청").Add(function(itemID, dataID)
 
 end)
 
-Server.onAddItem.Add(function(unit)
-    unit.FireEvent("무기목록재발신요청")
-end)
+-- Server.onAddItem.Add(function(unit)
+--     unit.FireEvent("무기목록재발신요청")
+-- end)
