@@ -6,7 +6,7 @@ Server.setMonsterAI(
         end
 
         if(event == AI_UPDATE) then             -- 2초마다 1번씩 실행
-            ai.SetNearTarget(0, 200)            -- 파라미터 1번값이 0이면 플레이어 탐색, 2번값은 대상과의 거리
+            ai.SetNearTarget(0, 300)            -- 파라미터 1번값이 0이면 플레이어 탐색, 2번값은 대상과의 거리
 
             if(ai.GetTargetUnit() ~= nil) then  -- 반환값을 주는 듯? 여하튼 여기선 반환값이 null이 아니면 실행
                 ai.UseSkill(0)                  -- 스킬 번호 입력
@@ -81,7 +81,7 @@ Server.setMonsterAI(
         end
 
         if(event == AI_UPDATE) then
-            ai.SetNearTarget(0, 200)
+            ai.SetNearTarget(0, 300)
 
             if(ai.GetTargetUnit() ~= nil) then
                 ai.UseSkill(0)
@@ -109,7 +109,7 @@ Server.setMonsterAI(
         end
 
         if(event == AI_UPDATE) then
-            ai.SetNearTarget(0, 200)
+            ai.SetNearTarget(0, 300)
 
             if(ai.GetTargetUnit() ~= nil) then
                 ai.UseSkill(0)
@@ -137,7 +137,7 @@ Server.setMonsterAI(
         end
 
         if(event == AI_UPDATE) then
-            ai.SetNearTarget(0, 200)
+            ai.SetNearTarget(0, 300)
 
             if(ai.GetTargetUnit() ~= nil) then
                 ai.UseSkill(0)
@@ -165,7 +165,7 @@ Server.setMonsterAI(
         end
 
         if(event == AI_UPDATE) then
-            ai.SetNearTarget(0, 200)
+            ai.SetNearTarget(0, 300)
 
             if(ai.GetTargetUnit() ~= nil) then
                 ai.UseSkill(0)
@@ -193,7 +193,7 @@ Server.setMonsterAI(
         end
 
         if(event == AI_UPDATE) then
-            ai.SetNearTarget(0, 200)
+            ai.SetNearTarget(0, 300)
 
             if(ai.GetTargetUnit() ~= nil) then
                 ai.UseSkill(0)
@@ -261,7 +261,7 @@ Server.setMonsterAI(
                 ai.UseSkill(10)
                 ai.SetFollowTarget(true)
             elseif(ai.GetTargetUnit() ~= nil) then
-                enemy.moveSpeed = 300
+                enemy.moveSpeed = 220
                 ai.SetFollowTarget(true)
             else
                 enemy.moveSpeed = 80
@@ -273,7 +273,7 @@ Server.setMonsterAI(
                 return
             else
                 ai.SetTargetUnit(ai.GetAttackedUnit())
-                enemy.moveSpeed = 300
+                enemy.moveSpeed = 220
                 ai.SetFollowTarget(true)
             end
         end
@@ -289,10 +289,10 @@ Server.setMonsterAI(
         end
 
         if(event == AI_UPDATE) then
-            ai.SetNearTarget(0, 200)
+            ai.SetNearTarget(0, 300)
 
             if(ai.GetTargetUnit() ~= nil) then
-                ai.UseSkill(0)
+                ai.UseSkill(15)
                 ai.SetFollowTarget(true)
             end
         end
@@ -320,7 +320,7 @@ Server.setMonsterAI(
             ai.SetNearTarget(0, 300)
 
             if(ai.GetTargetUnit() ~= nil) and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)<=120) then
-                ai.UseSkill(5)
+                ai.UseSkill(14)
                 ai.SetFollowTarget(true)
             elseif(ai.GetTargetUnit() ~= nil) then
                 ai.SetFollowTarget(true)
@@ -342,22 +342,35 @@ Server.setMonsterAI(
 Server.setMonsterAI(
     14,
     function (enemy, ai, event, data)
-        local skillnum = 0
 
         if(event == AI_INIT) then
+            ai.customData.delay = 0
         end
 
         if(event == AI_UPDATE) then
-            ai.SetNearTarget(0, 3000)
-            skillnum = skillnum + 1
-            Server.SendCenterLabel(skillnum)
+
+            if enemy.field.playerCount <=0 then
+                ai.SetTargetUnit(nil)
+                ai.customData.delay = 0
+                return
+            else
+                ai.SetNearTarget(0, 3000)
+            end
 
             if(ai.GetTargetUnit() ~= nil) and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)<=120) then
+                ai.customData.delay = ai.customData.delay + 1
                 ai.UseSkill(5)            
-            elseif(ai.GetTargetUnit() ~= nil) and skillnum%5 == 0 then
-                ai.UseSkill(3)
+            elseif(ai.GetTargetUnit() ~= nil) and ai.customData.delay ~= 0 and ai.customData.delay%4 == 0 then
+                ai.customData.delay = ai.customData.delay + 1
+                enemy.field.SendCenterLabel("<Color=Red>포착 중...</color> ")
+                ai.UseSkillToPosition(16, Point(ai.GetTargetUnit().x, ai.GetTargetUnit().y))
+            elseif(ai.GetTargetUnit() ~= nil) and ai.customData.delay ~= 0 and ai.customData.delay%5 == 0 then
+                ai.customData.delay = ai.customData.delay + 1
+                enemy.field.SendCenterLabel("<Color=Red>포착 완료</color> ")
+                ai.UseSkillToPosition(6, Point(ai.GetTargetUnit().x, ai.GetTargetUnit().y))
             elseif(ai.GetTargetUnit() ~= nil) then
-                ai.UseSkill(6)
+                ai.customData.delay = ai.customData.delay + 1
+                ai.UseSkill(0)
             end
         end
 
@@ -366,6 +379,129 @@ Server.setMonsterAI(
                 return
             else
                 ai.SetTargetUnit(ai.GetAttackedUnit())
+            end
+        end
+
+        if event == 2 then
+            ai.customData.delay = 0
+            enemy.SendUpdated()
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    7,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(0)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    17,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(0)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    16,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil)  and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)>=200) then
+                ai.UseSkill(10)
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) then
+                enemy.moveSpeed = 220
+                ai.SetFollowTarget(true)
+            else
+                enemy.moveSpeed = 80
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                enemy.moveSpeed = 220
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    9,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(0)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
             end
         end
 
