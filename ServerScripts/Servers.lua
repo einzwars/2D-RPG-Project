@@ -30,15 +30,10 @@ Server.GetTopic("originalQuickslot").Add(function(quick1, quick2, quick3, quick4
     unit.SetQuickSlot(2, 7, quick8)
 end)
 
--- function StatusUpdate(unit)    
---     --local questCounter = unit.GetStat(101)
+Server.GetTopic("hp알약사용").Add(function()
+    unit.StartGlobalEvent(46)    
+end)
 
---     unit.SetStat(101, unit.GetVar(23))
-
---     unit.SendUpdated()
--- end
-
--- function StatusInfoUpdated(unit)
---     StatusUpdate(unit)
--- end
--- Server.onRefreshStats.Add(StatusInfoUpdated)
+Server.GetTopic("냉각제사용").Add(function()
+    unit.StartGlobalEvent(47)    
+end)
