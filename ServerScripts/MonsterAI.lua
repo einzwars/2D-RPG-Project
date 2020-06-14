@@ -45,7 +45,7 @@ Server.setMonsterAI(
     function (enemy, ai, event, data)
 
         if(event == AI_INIT) then
-            Server.SendCenterLabel('침입자 발견. 침입자 발견. \n지금부터 섬멸작전을 시행합니다.')
+            enemy.field.SendCenterLabel("<Color=Red>침입자 발견. 침입자 발견. \n지금부터 섬멸작전을 시행합니다.</color>")
         end
 
         if(event == AI_UPDATE) then
@@ -653,6 +653,85 @@ Server.setMonsterAI(
                 enemy.moveSpeed = 300
                 ai.SetFollowTarget(true)
             end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    22,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil)  and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)>=200) then
+                ai.UseSkill(10)
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) then
+                enemy.moveSpeed = 300
+                ai.SetFollowTarget(true)
+            else
+                enemy.moveSpeed = 100
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                enemy.moveSpeed = 300
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    23,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+            ai.customData.militaryDelay = 0
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 1000)
+
+            if(ai.GetTargetUnit() ~= nil) and (enemy.hp<=enemy.maxHP*0.3) and (ai.customData.militaryDelay%5 == 0) then
+                enemy.field.SendCenterLabel("<Color=Red>위험! 위험!</color>")
+                ai.UseSkill(4)
+            end
+
+            if(ai.GetTargetUnit() ~= nil) and (ai.customData.militaryDelay~=0) and (ai.customData.militaryDelay%3 == 0) then
+                ai.customData.militaryDelay = ai.customData.militaryDelay+1
+                ai.UseSkill(3)
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) then
+                ai.customData.militaryDelay = ai.customData.militaryDelay+1
+                ai.UseSkill(8)
+                enemy.MakeSturn(2)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if event == 2 then
+            ai.customData.militaryDelay = 0
+            enemy.SendUpdated()
         end
 
     end
