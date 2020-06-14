@@ -37,8 +37,38 @@ Client.GetTopic("무목").Add(function(table)
                 c1.SetImageID(Client.GetItem(12).imageID)
                 c4.text = Client.GetItem(12).name .. "\n강화 재료1: "..v[4].."/10"
                 c8.text = "공격력+10"
+            elseif v[2] == 3 then   -- 방탄조끼
+                c1.SetImageID(Client.GetItem(13).imageID)
+                c4.text = Client.GetItem(13).name .. "\n강화 재료1: "..v[4].."/10"
+                c8.text = "방어력+5/체력+5"
+            elseif v[2] == 9 then   -- 부츠
+                c1.SetImageID(Client.GetItem(14).imageID)
+                c4.text = Client.GetItem(14).name .. "\n강화 재료1: "..v[4].."/10"
+                c8.text = "방어력+5/민첩+1"
+            elseif v[2] == 19 then   -- 개틀링건
+                c1.SetImageID(Client.GetItem(20).imageID)
+                c4.text = Client.GetItem(20).name .. "\n강화 재료1: "..v[4].."/10"
+                c8.text = "공격력+3"
+            elseif v[2] == 12 then   -- 개조 머신건
+                c1.SetImageID(Client.GetItem(26).imageID)
+                c4.text = Client.GetItem(26).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1"
+                c8.text = "공격력+10"
+            elseif v[2] == 13 then   -- 개조 조끼
+                c1.SetImageID(Client.GetItem(28).imageID)
+                c4.text = Client.GetItem(28).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1"
+                c8.text = "방어력+10/체력+10"
+            elseif v[2] == 14 then   -- 개조 부츠
+                c1.SetImageID(Client.GetItem(29).imageID)
+                c4.text = Client.GetItem(29).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1"
+                c8.text = "방어력+10/민첩+3"
+            elseif v[2] == 20 then   -- 개조 개틀링건
+                c1.SetImageID(Client.GetItem(27).imageID)
+                c4.text = Client.GetItem(27).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1"
+                c8.text = "공격력+7"
             else
-                Server.SendCenterLabel("아직 강화가 불가능합니다!")
+                Client.GetPage("강화").GetControl("아이템이미지").image = "Pictures/invisible.png"
+                c4.text = ""
+                c8.text = ""
             end
             c5.text = v[1]
             c9.text = v[2]
@@ -65,6 +95,7 @@ Client.GetTopic("강화성공").Add(function(level)
     Client.GetPage("강화").GetControl("아이템이미지").image = "Pictures/invisible.png"
     Client.GetPage("강화").GetControl("강화재료").text = ""
     Client.GetPage("강화").GetControl("강화수치").text = ""
+    Client.GetPage("강화").Destroy()
 end)
 
 Client.GetTopic("무기목록재발신요청").Add(function()

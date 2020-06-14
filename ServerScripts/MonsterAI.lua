@@ -634,41 +634,7 @@ Server.setMonsterAI(
         if(event == AI_UPDATE) then
             ai.SetNearTarget(0, 300)
 
-            if(ai.GetTargetUnit() ~= nil)  and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)>=200) then
-                ai.UseSkill(10)
-                ai.SetFollowTarget(true)
-            elseif(ai.GetTargetUnit() ~= nil) then
-                enemy.moveSpeed = 300
-                ai.SetFollowTarget(true)
-            else
-                enemy.moveSpeed = 100
-            end
-        end
-
-        if(event == AI_ATTACKED) then
-            if ai.GetAttackedUnit() == nil then
-                return
-            else
-                ai.SetTargetUnit(ai.GetAttackedUnit())
-                enemy.moveSpeed = 300
-                ai.SetFollowTarget(true)
-            end
-        end
-
-    end
-)
-
-Server.setMonsterAI(
-    22,
-    function (enemy, ai, event, data)
-
-        if(event == AI_INIT) then
-        end
-
-        if(event == AI_UPDATE) then
-            ai.SetNearTarget(0, 300)
-
-            if(ai.GetTargetUnit() ~= nil)  and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)>=200) then
+            if(ai.GetTargetUnit() ~= nil) and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)>=200) then
                 ai.UseSkill(10)
                 ai.SetFollowTarget(true)
             elseif(ai.GetTargetUnit() ~= nil) then
@@ -731,6 +697,119 @@ Server.setMonsterAI(
 
         if event == 2 then
             ai.customData.militaryDelay = 0
+            enemy.SendUpdated()
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    24,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(15)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    25,
+    function (enemy, ai, event, data)
+        local randnum = math.random(0, 99)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 1500)
+
+            if(ai.GetTargetUnit() ~= nil) and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)>=120) then
+                ai.UseSkill(10)
+                enemy.PullFromUnit(ai.GetTargetUnit(), 100, 0.3)
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) and randnum <= 49 then
+                ai.UseSkill(18)
+                ai.SetFollowTarget(true)
+            else
+                ai.UseSkill(19)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    26,
+    function (enemy, ai, event, data)
+        local randomx = math.random(32*4, 32*34)
+        local randomy = -(math.random(32*3, 32*15))
+
+        if(event == AI_INIT) then
+            ai.customData.droneDelay = 0
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 3000)
+
+            if(ai.GetTargetUnit() ~= nil) and (ai.customData.droneDelay~=0) and (ai.customData.droneDelay%5 == 0) then
+                ai.customData.droneDelay = ai.customData.droneDelay+1
+                enemy.field.SendCenterLabel("<Color=Red>K 넌 로봇이야! 내말을 들어야 해!</color>")
+                ai.UseSkill(22)
+                enemy.MakeSturn(2)
+            elseif(ai.GetTargetUnit() ~= nil) and (ai.customData.droneDelay~=0) and (ai.customData.droneDelay%3 == 0) then
+                ai.customData.droneDelay = ai.customData.droneDelay+1
+                ai.UseSkill(21)
+                enemy.SpawnAt(randomx-16, randomy-16)           
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) then
+                ai.customData.droneDelay = ai.customData.droneDelay+1
+                enemy.field.SendCenterLabel("<Color=Red>죽어라!</color>")
+                ai.UseSkill(20)
+                enemy.MakeSturn(2)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if event == 2 then
+            ai.customData.droneDelay = 0
             enemy.SendUpdated()
         end
 
