@@ -815,3 +815,39 @@ Server.setMonsterAI(
 
     end
 )
+
+Server.setMonsterAI(
+    27,
+    function (enemy, ai, event, data)
+        local randnum = math.random(0, 99)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 2000)
+
+            if(ai.GetTargetUnit() ~= nil) and (enemy.hp<=enemy.maxHP*0.5) then
+                ai.UseSkill(24)
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) and randnum <= 49 then
+                ai.UseSkill(23)
+                enemy.MakeSturn(2)
+                ai.SetFollowTarget(true)
+            else
+                ai.UseSkill(25)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
