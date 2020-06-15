@@ -827,7 +827,7 @@ Server.setMonsterAI(
         if(event == AI_UPDATE) then
             ai.SetNearTarget(0, 2000)
 
-            if(ai.GetTargetUnit() ~= nil) and (enemy.hp<=enemy.maxHP*0.5) and randnum <=66 then
+            if(ai.GetTargetUnit() ~= nil) and (enemy.hp<=enemy.maxHP*0.5) and randnum <=33 then
                 ai.UseSkill(24)
                 ai.SetFollowTarget(true)
             elseif(ai.GetTargetUnit() ~= nil) and randnum <= 49 then
