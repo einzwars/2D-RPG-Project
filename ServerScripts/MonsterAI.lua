@@ -770,15 +770,15 @@ Server.setMonsterAI(
 Server.setMonsterAI(
     26,
     function (enemy, ai, event, data)
-        local randomx = math.random(32*4, 32*34)
-        local randomy = -(math.random(32*3, 32*15))
+        local randomx = math.random(32*4, 32*28)
+        local randomy = -(math.random(32*3, 32*19))
 
         if(event == AI_INIT) then
             ai.customData.droneDelay = 0
         end
 
         if(event == AI_UPDATE) then
-            ai.SetNearTarget(0, 3000)
+            ai.SetNearTarget(0, 33*24)
 
             if(ai.GetTargetUnit() ~= nil) and (ai.customData.droneDelay~=0) and (ai.customData.droneDelay%5 == 0) then
                 ai.customData.droneDelay = ai.customData.droneDelay+1
