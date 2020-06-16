@@ -66,7 +66,7 @@ function sub_quest(id)
 	for i=1, #qData.list do
 		if bool == false then
 			if qData.list[#qData.list-(i-1)].id == id then
-				-- unit.SendCenterLabel(string.gsub(qData.list[#qData.list-(i-1)].name, "slash", "/").." 퀘스트를 포기하였습니다.")
+				unit.SendCenterLabel(string.gsub(qData.list[#qData.list-(i-1)].name, "slash", "/").." 퀘스트를 완료하였습니다!")
 				table.remove(qData.list, #qData.list-(i-1))
 				unit.SetStringVar(quest_var, Utility.JSONSerialize(qData))
 				bool = true
