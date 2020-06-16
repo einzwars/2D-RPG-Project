@@ -6,7 +6,7 @@ Server.setMonsterAI(
 
         if(event == AI_UPDATE) then             -- 2초마다 1번씩 실행
             ai.SetNearTarget(0, 300)            -- 파라미터 1번값이 0이면 플레이어 탐색, 2번값은 대상과의 거리
-
+           
             if(ai.GetTargetUnit() ~= nil) then  -- 반환값을 주는 듯? 여하튼 여기선 반환값이 null이 아니면 실행
                 ai.UseSkill(26)                  -- 스킬 번호 입력                
             end
