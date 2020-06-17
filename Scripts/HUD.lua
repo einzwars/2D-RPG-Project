@@ -4,7 +4,7 @@
 -- ScreenUI.expBarVisible  = false
 -- ScreenUI.levelVisible = false
 
-HPMP = Image("Pictures/HPMP.png", Rect(Client.width/2-104, Client.height-101, 207, 41))
+HPMP = Image("Pictures/hpmp2.png", Rect(Client.width/2-104, Client.height-101, 207, 41))
 HUD = Image("Pictures/HUD.png", Rect(0, Client.height-48, 1200, 48))
 BAR_HP = Image("Pictures/BAR_HP.png", Rect(Client.width/2-60, Client.height-95, 146, 10))
 BAR_MP = Image("Pictures/BAR_MP.png", Rect(Client.width/2-60, Client.height-79, 146, 10))
