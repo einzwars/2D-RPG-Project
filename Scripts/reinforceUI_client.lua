@@ -35,36 +35,52 @@ Client.GetTopic("무목").Add(function(table)
             c3.visible = true
             if v[2] == 2 then   -- 머신건
                 c1.SetImageID(Client.GetItem(12).imageID)
-                c4.text = Client.GetItem(12).name .. "\n강화 재료1: "..v[4].."/10"
-                c8.text = "공격력+10"
+                c4.text = Client.GetItem(12).name .. "\n강화 재료1: "..v[4].."/10\n골드: "..v[9].."/1000"
+                c8.text = "공격력+50"
             elseif v[2] == 3 then   -- 방탄조끼
                 c1.SetImageID(Client.GetItem(13).imageID)
-                c4.text = Client.GetItem(13).name .. "\n강화 재료1: "..v[4].."/10"
-                c8.text = "방어력+5/체력+5"
+                c4.text = Client.GetItem(13).name .. "\n강화 재료1: "..v[4].."/10\n골드: "..v[9].."/1000"
+                c8.text = "방어력+10/체력+200"
             elseif v[2] == 9 then   -- 부츠
                 c1.SetImageID(Client.GetItem(14).imageID)
-                c4.text = Client.GetItem(14).name .. "\n강화 재료1: "..v[4].."/10"
-                c8.text = "방어력+5/민첩+1"
+                c4.text = Client.GetItem(14).name .. "\n강화 재료1: "..v[4].."/10\n골드: "..v[9].."/1000"
+                c8.text = "방어력+10/민첩+2"
             elseif v[2] == 19 then   -- 개틀링건
                 c1.SetImageID(Client.GetItem(20).imageID)
-                c4.text = Client.GetItem(20).name .. "\n강화 재료1: "..v[4].."/10"
-                c8.text = "공격력+3"
+                c4.text = Client.GetItem(20).name .. "\n강화 재료1: "..v[4].."/10\n골드: "..v[9].."/1000"
+                c8.text = "공격력+40"
             elseif v[2] == 12 then   -- 개조 머신건
                 c1.SetImageID(Client.GetItem(26).imageID)
-                c4.text = Client.GetItem(26).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1"
-                c8.text = "공격력+10"
+                c4.text = Client.GetItem(26).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1\n골드: "..v[9].."/3000"
+                c8.text = "공격력+150"
             elseif v[2] == 13 then   -- 개조 조끼
                 c1.SetImageID(Client.GetItem(28).imageID)
-                c4.text = Client.GetItem(28).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1"
-                c8.text = "방어력+10/체력+10"
+                c4.text = Client.GetItem(28).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1\n골드: "..v[9].."/3000"
+                c8.text = "방어력+20/체력+400"
             elseif v[2] == 14 then   -- 개조 부츠
                 c1.SetImageID(Client.GetItem(29).imageID)
-                c4.text = Client.GetItem(29).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1"
-                c8.text = "방어력+10/민첩+3"
+                c4.text = Client.GetItem(29).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1\n골드: "..v[9].."/3000"
+                c8.text = "방어력+20/민첩+5"
             elseif v[2] == 20 then   -- 개조 개틀링건
                 c1.SetImageID(Client.GetItem(27).imageID)
-                c4.text = Client.GetItem(27).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1"
-                c8.text = "공격력+7"
+                c4.text = Client.GetItem(27).name .. "\n강화 재료2: "..v[5].."/10\n특별 강화 재료: "..v[7].."/1\n골드: "..v[9].."/3000"
+                c8.text = "공격력+140"
+            elseif v[2] == 26 then   -- 특별 머신건
+                c1.SetImageID(Client.GetItem(37).imageID)
+                c4.text = Client.GetItem(37).name .. "\n강화 재료3: "..v[6].."/10\n전설 강화 재료: "..v[8].."/1\n골드: "..v[9].."/10000"
+                c8.text = "공격력+300"
+            elseif v[2] == 28 then   -- 특별 조끼
+                c1.SetImageID(Client.GetItem(39).imageID)
+                c4.text = Client.GetItem(39).name .. "\n강화 재료3: "..v[6].."/10\n전설 강화 재료: "..v[8].."/1\n골드: "..v[9].."/10000"
+                c8.text = "방어력+30/체력+500"
+            elseif v[2] == 29 then   -- 특별 부츠
+                c1.SetImageID(Client.GetItem(40).imageID)
+                c4.text = Client.GetItem(40).name .. "\n강화 재료3: "..v[6].."/10\n전설 강화 재료: "..v[8].."/1\n골드: "..v[9].."/10000"
+                c8.text = "방어력+30/민첩+10"
+            elseif v[2] == 27 then   -- 특별 개틀링건
+                c1.SetImageID(Client.GetItem(38).imageID)
+                c4.text = Client.GetItem(38).name .. "\n강화 재료3: "..v[6].."/10\n전설 강화 재료: "..v[8].."/1\n골드: "..v[9].."/10000"
+                c8.text = "공격력+270"
             else
                 Client.GetPage("강화").GetControl("아이템이미지").image = "Pictures/invisible.png"
                 c4.text = ""
