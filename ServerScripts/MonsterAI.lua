@@ -388,7 +388,7 @@ Server.setMonsterAI(
                 ai.UseSkillToPosition(6, Point(ai.GetTargetUnit().x, ai.GetTargetUnit().y))
             elseif(ai.GetTargetUnit() ~= nil) then
                 ai.customData.delay = ai.customData.delay + 1
-                ai.UseSkill(0)
+                ai.UseSkill(30)
             end
         end
 
@@ -866,6 +866,316 @@ Server.setMonsterAI(
 
 Server.setMonsterAI(
     27,
+    function (enemy, ai, event, data)
+        local randnum = math.random(0, 99)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 2000)
+
+            if(ai.GetTargetUnit() ~= nil) and (enemy.hp<=enemy.maxHP*0.5) and randnum <=33 then
+                if(randnum == 0) then
+                    enemy.field.SendCenterLabel("<Color=Red>죽어라 이 대머리!</color>")
+                end
+                ai.UseSkill(24)
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) and randnum <= 49 then
+                enemy.field.SendCenterLabel("<Color=Red>무다무다무다무다무다무다!!!</color>")
+                ai.UseSkill(23)
+                enemy.MakeSturn(2)
+                ai.SetFollowTarget(true)
+            else
+                ai.UseSkill(25)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    28,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil) and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)<=120) then
+                ai.UseSkill(14)
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) then
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_DEAD) then
+            enemy.ShowAnimation(43)
+        end
+    end
+)
+
+Server.setMonsterAI(
+    29,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(26)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+            end
+        end
+
+        if(event == AI_DEAD) then
+            enemy.ShowAnimation(43)
+        end
+    end
+)
+
+Server.setMonsterAI(
+    30,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(26)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_DEAD) then
+            enemy.ShowAnimation(43)
+        end
+    end
+)
+
+Server.setMonsterAI(
+    31,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(27)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_DEAD) then
+            enemy.ShowAnimation(43)
+        end
+    end
+)
+
+Server.setMonsterAI(
+    32,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil)  and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)>=200) then
+                ai.UseSkill(10)
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) then
+                enemy.moveSpeed = 200
+                ai.SetFollowTarget(true)
+            else
+                enemy.moveSpeed = 60
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                enemy.moveSpeed = 200
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_DEAD) then
+            enemy.ShowAnimation(43)
+        end
+    end
+)
+
+Server.setMonsterAI(
+    33,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil) and (ai.Distance(enemy.x, enemy.y, ai.GetTargetUnit().x, ai.GetTargetUnit().y)<=120) then
+                ai.UseSkill(14)
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) then
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_DEAD) then
+            enemy.ShowAnimation(43)
+        end
+    end
+)
+
+Server.setMonsterAI(
+    34,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 300)
+
+            if(ai.GetTargetUnit() ~= nil) then
+                ai.UseSkill(15)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_DEAD) then
+            enemy.ShowAnimation(43)
+        end
+    end
+)
+
+Server.setMonsterAI(
+    35,
+    function (enemy, ai, event, data)
+
+        if(event == AI_INIT) then
+            ai.customData.militaryDelay = 0
+        end
+
+        if(event == AI_UPDATE) then
+            ai.SetNearTarget(0, 1000)
+
+            if(ai.GetTargetUnit() ~= nil) and (enemy.hp<=enemy.maxHP*0.3) and (ai.customData.militaryDelay%5 == 0) then
+                enemy.field.SendCenterLabel("<Color=Red>위험! 위험!</color>")
+                ai.UseSkill(4)
+            end
+
+            if(ai.GetTargetUnit() ~= nil) and (ai.customData.militaryDelay~=0) and (ai.customData.militaryDelay%3 == 0) then
+                ai.customData.militaryDelay = ai.customData.militaryDelay+1
+                ai.UseSkill(3)
+                ai.SetFollowTarget(true)
+            elseif(ai.GetTargetUnit() ~= nil) then
+                ai.customData.militaryDelay = ai.customData.militaryDelay+1
+                ai.UseSkill(8)
+                enemy.MakeSturn(2)
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if(event == AI_ATTACKED) then
+            if ai.GetAttackedUnit() == nil then
+                return
+            else
+                ai.SetTargetUnit(ai.GetAttackedUnit())
+                ai.SetFollowTarget(true)
+            end
+        end
+
+        if event == 2 then
+            ai.customData.militaryDelay = 0
+            enemy.SendUpdated()
+        end
+
+    end
+)
+
+Server.setMonsterAI(
+    36,
     function (enemy, ai, event, data)
         local randnum = math.random(0, 99)
 
