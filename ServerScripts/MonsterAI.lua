@@ -1192,12 +1192,12 @@ Server.setMonsterAI(
                 ai.UseSkill(24)
                 ai.SetFollowTarget(true)
             elseif(ai.GetTargetUnit() ~= nil) and randnum <= 49 then
+                ai.UseSkill(25)
+                ai.SetFollowTarget(true)
+            else
                 enemy.field.SendCenterLabel("<Color=Red>무다무다무다무다무다무다!!!</color>")
                 ai.UseSkill(23)
                 enemy.MakeSturn(2)
-                ai.SetFollowTarget(true)
-            else
-                ai.UseSkill(25)
                 ai.SetFollowTarget(true)
             end
         end
