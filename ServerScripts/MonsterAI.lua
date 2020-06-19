@@ -1151,7 +1151,7 @@ Server.setMonsterAI(
                 ai.SetFollowTarget(true)
             elseif(ai.GetTargetUnit() ~= nil) then
                 ai.customData.militaryDelay = ai.customData.militaryDelay+1
-                ai.UseSkill(8)
+                ai.UseSkill(39)
                 enemy.MakeSturn(2)
                 ai.SetFollowTarget(true)
             end
