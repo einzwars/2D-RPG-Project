@@ -75,7 +75,7 @@ RandomOption.itemList = { --★ 수정필요 ★
     [2] = { -- 전설
         optionCount=3, optionAmp=200,
         dataID = {
-            37, 38, 39, 40
+            37, 38, 39, 40, 48, 49, 50, 51
         }
     }, 
     [3] = {

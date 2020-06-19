@@ -92,12 +92,19 @@ Server.GetTopic("강화요청").Add(function(itemID, dataID)
         unit.AddItem(27, 1)
         unit.FireEvent("강화성공")
     elseif dataID == "26" and unit.CountItem(34)>=10 and unit.CountItem(36)>=1 and unit.gameMoney>=10000 then -- 특별 머신건
+        local randnum = math.random(0, 99)
         unit.RemoveItem(26, 1, false)
         unit.RemoveItem(34, 10, false)
         unit.RemoveItem(36, 1, false)
         unit.UseGameMoney(10000)
         unit.SendCenterLabel("강화에 성공했습니다!")
-        unit.AddItem(37, 1)
+        if(randnum<=33) then
+            unit.AddItem(37, 1)
+        elseif(randnum<=66) then
+            unit.AddItem(48, 1)
+        else
+            unit.AddItem(49, 1)
+        end
         unit.FireEvent("강화성공")
     elseif dataID == "28" and unit.CountItem(34)>=10 and unit.CountItem(36)>=1 and unit.gameMoney>=10000 then -- 특별 조끼
         unit.RemoveItem(28, 1, false)
@@ -116,12 +123,19 @@ Server.GetTopic("강화요청").Add(function(itemID, dataID)
         unit.AddItem(40, 1)
         unit.FireEvent("강화성공")
     elseif dataID == "27" and unit.CountItem(34)>=10 and unit.CountItem(36)>=1 and unit.gameMoney>=10000 then -- 특별 개틀링건
+        local randnum = math.random(0, 99)
         unit.RemoveItem(27, 1, false)
         unit.RemoveItem(34, 10, false)
         unit.RemoveItem(36, 1, false)
         unit.UseGameMoney(10000)
         unit.SendCenterLabel("강화에 성공했습니다!")
-        unit.AddItem(38, 1)
+        if(randnum<=33) then
+            unit.AddItem(38, 1)
+        elseif(randnum<=66) then
+            unit.AddItem(50, 1)
+        else
+            unit.AddItem(51, 1)
+        end
         unit.FireEvent("강화성공")
     else
         unit.SendCenterLabel("강화 재료 혹은 골드가 부족합니다!")

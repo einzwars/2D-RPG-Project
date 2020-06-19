@@ -1191,7 +1191,7 @@ Server.setMonsterAI(
                 end
                 ai.UseSkill(24)
                 ai.SetFollowTarget(true)
-            elseif(ai.GetTargetUnit() ~= nil) and randnum <= 49 then
+            elseif(ai.GetTargetUnit() ~= nil) and randnum <= 66 then
                 ai.UseSkill(25)
                 ai.SetFollowTarget(true)
             else
